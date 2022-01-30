@@ -1,6 +1,8 @@
 {
   "version": 2,
   "projects": {
+    "change-detection-demo": "apps/change-detection-demo",
+    "change-detection-demo-e2e": "apps/change-detection-demo-e2e",
     "express-test": "apps/express-test"
   }
 }
