@@ -1,0 +1,22 @@
+<div>
+	<h1>Progress Util Demo</h1>
+
+	<hr>
+	<!--<h2>Observable</h2>
+	<h3 *ngIf='loadingState$.value.loading'>Loading...</h3>
+	<h3 *ngIf='!loadingState$.getValue().loading'>Loaded :)</h3>
+	<h3 *ngIf='!(loadingState$|async)?.loading'>Loaded Async :)</h3>
+	<hr>
+-->
+	<h2>Non-Observable</h2>
+	<h3 *ngIf='loadingState?.loading'>Loading...</h3>
+	<h3 *ngIf='!loadingState?.loading'>Loaded :)</h3>
+
+
+	<hr>
+	<h2>NgNeat Load off</h2>
+	<h3 *ngIf='state.loading'>Loading...</h3>
+	<h3 *ngIf='!state.loading'>Loaded :)</h3>
+
+</div>
+<router-outlet></router-outlet>

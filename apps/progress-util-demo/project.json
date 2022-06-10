@@ -1,0 +1,100 @@
+{
+  "projectType": "application",
+  "root": "apps/progress-util-demo",
+  "sourceRoot": "apps/progress-util-demo/src",
+  "prefix": "nx-projects",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/apps/progress-util-demo",
+        "index": "apps/progress-util-demo/src/index.html",
+        "main": "apps/progress-util-demo/src/main.ts",
+        "polyfills": "apps/progress-util-demo/src/polyfills.ts",
+        "tsConfig": "apps/progress-util-demo/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/progress-util-demo/src/favicon.ico",
+          "apps/progress-util-demo/src/assets"
+        ],
+        "styles": [
+          "apps/progress-util-demo/src/styles.scss"
+        ],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/progress-util-demo/src/environments/environment.ts",
+              "with": "apps/progress-util-demo/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "progress-util-demo:build:production"
+        },
+        "development": {
+          "browserTarget": "progress-util-demo:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "progress-util-demo:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/progress-util-demo/**/*.ts",
+          "apps/progress-util-demo/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/apps/progress-util-demo"
+      ],
+      "options": {
+        "jestConfig": "apps/progress-util-demo/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
