@@ -1,10 +1,11 @@
 {
-  "version": 2,
-  "projects": {
-    "change-detection-demo": "apps/change-detection-demo",
-    "change-detection-demo-e2e": "apps/change-detection-demo-e2e",
-    "express-test": "apps/express-test",
-    "progress-util-demo": "apps/progress-util-demo",
-    "progress-util-demo-e2e": "apps/progress-util-demo-e2e"
-  }
+	"version": 2,
+	"projects": {
+		"change-detection-demo": "apps/change-detection-demo",
+		"change-detection-demo-e2e": "apps/change-detection-demo-e2e",
+		"express-test": "apps/express-test",
+		"progress-util-demo": "apps/progress-util-demo",
+		"progress-util-demo-e2e": "apps/progress-util-demo-e2e"
+	},
+	"$schema": "./node_modules/nx/schemas/workspace-schema.json"
 }

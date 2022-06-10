@@ -1,34 +1,28 @@
 {
-  "root": "apps/progress-util-demo-e2e",
-  "sourceRoot": "apps/progress-util-demo-e2e/src",
-  "projectType": "application",
-  "targets": {
-    "e2e": {
-      "executor": "@nrwl/cypress:cypress",
-      "options": {
-        "cypressConfig": "apps/progress-util-demo-e2e/cypress.json",
-        "devServerTarget": "progress-util-demo:serve:development"
-      },
-      "configurations": {
-        "production": {
-          "devServerTarget": "progress-util-demo:serve:production"
-        }
-      }
-    },
-    "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
-      "options": {
-        "lintFilePatterns": [
-          "apps/progress-util-demo-e2e/**/*.{js,ts}"
-        ]
-      }
-    }
-  },
-  "tags": [],
-  "implicitDependencies": [
-    "progress-util-demo"
-  ]
+	"$schema": "../../node_modules/nx/schemas/project-schema.json",
+	"sourceRoot": "apps/progress-util-demo-e2e/src",
+	"projectType": "application",
+	"targets": {
+		"e2e": {
+			"executor": "@nrwl/cypress:cypress",
+			"options": {
+				"cypressConfig": "apps/progress-util-demo-e2e/cypress.json",
+				"devServerTarget": "progress-util-demo:serve:development"
+			},
+			"configurations": {
+				"production": {
+					"devServerTarget": "progress-util-demo:serve:production"
+				}
+			}
+		},
+		"lint": {
+			"executor": "@nrwl/linter:eslint",
+			"outputs": ["{options.outputFile}"],
+			"options": {
+				"lintFilePatterns": ["apps/progress-util-demo-e2e/**/*.{js,ts}"]
+			}
+		}
+	},
+	"tags": [],
+	"implicitDependencies": ["progress-util-demo"]
 }
