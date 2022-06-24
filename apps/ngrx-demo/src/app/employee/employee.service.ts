@@ -13,7 +13,7 @@ export class EmployeeService extends EntityCollectionServiceBase<Employee> {
 	}
 
 	getEmployees() {
-		this.selectors$.count$.pipe(filter((count) => count > 0)).subscribe(() => {
+		this.selectors$.count$.pipe(filter((count) => count <= 0)).subscribe(() => {
 			this.httpClient.get<Employee[]>('./assets/employees.json').subscribe((value) => {
 				this.upsertManyInCache(value);
 				value.forEach((value1) => this.upsert(value1));
