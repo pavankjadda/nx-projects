@@ -1,0 +1,12 @@
+<h2>Drawer Open? {{ drawerOpen$ | async }}</h2>
+<h2>Mobile Drawer Open? {{ mobileDrawerOpen$ | async }}</h2>
+
+<button (click)="changeDrawerStatus()">Change Drawer Status</button>
+<button (click)="changeMobileDrawerStatus()">Change Mobile Drawer Status</button>
+
+<hr />
+<h1>Employees</h1>
+<ul>
+	<li *ngFor="let employee of employees">{{ employee.lastName }}, {{ employee.firstName }}</li>
+</ul>
+<router-outlet></router-outlet>
