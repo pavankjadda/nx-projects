@@ -4,7 +4,6 @@ import { toggleDrawerStatus, toggleMobileDrawerStatus } from './state/reducers/p
 import { RootState } from './state/root.reducer';
 import { EmployeeService } from './employee/employee.service';
 import { Employee } from './employee/employee';
-import { upsertEmployees } from './state/reducers/employee.reducer';
 
 @Component({
 	selector: 'nx-projects-root',
@@ -29,7 +28,6 @@ export class AppComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.employeeService.getEmployees().subscribe((data) => {
-			this.store.dispatch(upsertEmployees({ employees: data }));
 			this.employees = data;
 		});
 	}
