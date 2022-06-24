@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Employee } from './employee';
 import { EntityCollectionServiceBase, EntityCollectionServiceElementsFactory } from '@ngrx/data';
-import { defaultIfEmpty, filter, isEmpty, tap } from 'rxjs';
+import { filter } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root',
@@ -13,18 +13,12 @@ export class EmployeeService extends EntityCollectionServiceBase<Employee> {
 	}
 
 	getEmployees() {
-		this.entities$.pipe(isEmpty()).subscribe((cacheMiss) => {
-			if (cacheMiss) {
-				console.log('cache miss');
-				this.httpClient.get<Employee[]>('./assets/employees.json').pipe(
-					tap((value) => {
-						this.upsertManyInCache(value);
-					})
-				);
-			}
-			console.log('cache hit');
+		this.selectors$.count$.pipe(filter((count) => count > 0)).subscribe(() => {
+			this.httpClient.get<Employee[]>('./assets/employees.json').subscribe((value) => {
+				this.upsertManyInCache(value);
+				value.forEach((value1) => this.upsert(value1));
+			});
 		});
-
 		return this.entities$;
 	}
 }

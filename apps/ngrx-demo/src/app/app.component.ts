@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { toggleDrawerStatus, toggleMobileDrawerStatus } from './state/reducers/preferences.reducer';
 import { RootState } from './state/root.reducer';
-import { EmployeeService } from './employee/employee.service';
-import { Employee } from './employee/employee';
 
 @Component({
 	selector: 'nx-projects-root',
@@ -12,11 +10,10 @@ import { Employee } from './employee/employee';
 })
 export class AppComponent implements OnInit {
 	title = 'ngrx-demo';
-	employees: Employee[] = [];
 	drawerOpen$ = this.store.select((state) => state.preferencesState?.drawerOpen);
 	mobileDrawerOpen$ = this.store.select((state) => state.preferencesState?.mobileDrawerOpen);
 
-	constructor(private store: Store<RootState>, private employeeService: EmployeeService) {}
+	constructor(private store: Store<RootState>) {}
 
 	changeDrawerStatus() {
 		this.store.dispatch(toggleDrawerStatus());
@@ -26,9 +23,5 @@ export class AppComponent implements OnInit {
 		this.store.dispatch(toggleMobileDrawerStatus());
 	}
 
-	ngOnInit(): void {
-		this.employeeService.getEmployees().subscribe((data) => {
-			this.employees = data;
-		});
-	}
+	ngOnInit(): void {}
 }

@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DefaultDataServiceConfig, EntityDataModule } from '@ngrx/data';
 import { appEntityMetadata } from './state/entities/app-entity-metadata';
 import { ProjectsComponent } from './projects/projects.component';
+import { AllEmployeesComponent } from './all-employees/all-employees.component';
 
 const defaultDataServiceConfig: DefaultDataServiceConfig = {
 	root: '/assets',
@@ -26,8 +27,8 @@ const defaultDataServiceConfig: DefaultDataServiceConfig = {
 		RouterModule.forRoot(
 			[
 				{
-					path: 'projects',
-					component: ProjectsComponent,
+					path: 'all_employees',
+					component: AllEmployeesComponent,
 				},
 			],
 			{ initialNavigation: 'enabledBlocking' }

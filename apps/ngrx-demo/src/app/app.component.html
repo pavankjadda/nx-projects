@@ -5,9 +5,7 @@
 <button (click)="changeMobileDrawerStatus()">Change Mobile Drawer Status</button>
 
 <hr />
-<h1>Employees</h1>
-<ul>
-	<li *ngFor="let employee of employees">{{ employee.lastName }}, {{ employee.firstName }}</li>
-</ul>
-<a routerLink="/projects">Projects</a>
+<a routerLink="/all_employees">All Employees</a>
+<br />
+<a routerLink="/">Home</a>
 <router-outlet></router-outlet>
