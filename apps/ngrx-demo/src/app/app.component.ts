@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { toggleDrawerStatus, toggleMobileDrawerStatus } from './state/reducers/preferences.reducer';
 import { RootState } from './state/root.reducer';
@@ -8,8 +8,7 @@ import { RootState } from './state/root.reducer';
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
-	title = 'ngrx-demo';
+export class AppComponent {
 	drawerOpen$ = this.store.select((state) => state.preferencesState?.drawerOpen);
 	mobileDrawerOpen$ = this.store.select((state) => state.preferencesState?.mobileDrawerOpen);
 
@@ -22,6 +21,4 @@ export class AppComponent implements OnInit {
 	changeMobileDrawerStatus() {
 		this.store.dispatch(toggleMobileDrawerStatus());
 	}
-
-	ngOnInit(): void {}
 }

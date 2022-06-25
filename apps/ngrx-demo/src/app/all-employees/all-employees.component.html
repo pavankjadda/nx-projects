@@ -1,4 +1,4 @@
 <h1>All Employees</h1>
 <ul>
-	<li *ngFor="let employee of employees">{{ employee.lastName }}, {{ employee.firstName }}</li>
+	<li *ngFor="let employee of employees$ | async">{{ employee.lastName }}, {{ employee.firstName }}</li>
 </ul>

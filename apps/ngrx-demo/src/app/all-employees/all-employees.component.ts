@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Employee } from '../employee/employee';
 import { EmployeeService } from '../employee/employee.service';
+import { Observable } from 'rxjs';
 
 @Component({
 	selector: 'nx-projects-all-employees',
@@ -10,13 +11,11 @@ import { EmployeeService } from '../employee/employee.service';
 	templateUrl: './all-employees.component.html',
 	styleUrls: ['./all-employees.component.scss'],
 })
-export class AllEmployeesComponent implements OnInit {
-	employees: Employee[] = [];
-	constructor(private employeeService: EmployeeService) {}
+export class AllEmployeesComponent {
+	employees$: Observable<Employee[]> | undefined;
 
-	ngOnInit(): void {
-		this.employeeService.getEmployees().subscribe((data) => {
-			this.employees = data;
-		});
+	constructor(private employeeService: EmployeeService) {
+		this.employees$ = this.employeeService.entities$;
+		this.employeeService.entities$.subscribe((data) => console.log(data));
 	}
 }
