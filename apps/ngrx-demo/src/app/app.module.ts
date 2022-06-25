@@ -9,10 +9,15 @@ import { environment } from '../environments/environment';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { reducers } from './state/root.reducer';
 import { HttpClientModule } from '@angular/common/http';
-import { EntityDataModule, EntityDataService } from '@ngrx/data';
+import { DefaultDataServiceConfig, EntityDataModule, EntityDataService } from '@ngrx/data';
 import { appEntityMetadata } from './state/entities/app-entity-metadata';
 import { AllEmployeesComponent } from './all-employees/all-employees.component';
 import { EmployeeDataService } from './employee/employee-data.service';
+
+const defaultDataServiceConfig: DefaultDataServiceConfig = {
+	root: 'http://localhost:3000/',
+	timeout: 3000, // request timeout
+}
 
 @NgModule({
 	declarations: [AppComponent],
@@ -42,7 +47,7 @@ import { EmployeeDataService } from './employee/employee-data.service';
 		!environment.production ? StoreDevtoolsModule.instrument() : [],
 		StoreRouterConnectingModule.forRoot(),
 	],
-	providers: [EmployeeDataService],
+	providers: [EmployeeDataService,{ provide: DefaultDataServiceConfig, useValue:    defaultDataServiceConfig }],
 	bootstrap: [AppComponent],
 })
 export class AppModule {
