@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Employee } from '../employee/employee';
 import { EmployeeService } from '../employee/employee.service';
 import { Observable } from 'rxjs';
-import { EntityCollectionService, EntityCollectionServiceFactory } from '@ngrx/data';
+import { EntityCollectionServiceFactory } from '@ngrx/data';
 
 @Component({
 	selector: 'nx-projects-all-employees',
