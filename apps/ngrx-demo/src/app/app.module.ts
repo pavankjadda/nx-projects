@@ -44,11 +44,7 @@ const defaultDataServiceConfig: DefaultDataServiceConfig = {
 		!environment.production ? StoreDevtoolsModule.instrument() : [],
 		StoreRouterConnectingModule.forRoot(),
 	],
-	//providers: [{ provide: DefaultDataServiceConfig, useValue:    defaultDataServiceConfig }],
+	providers: [{ provide: DefaultDataServiceConfig, useValue: defaultDataServiceConfig }],
 	bootstrap: [AppComponent],
 })
-export class AppModule {
-	/*constructor(entityDataService: EntityDataService, EmployeeDataService: EmployeeDataService) {
-		entityDataService.registerService('Employee', EmployeeDataService);
-	}*/
-}
+export class AppModule {}

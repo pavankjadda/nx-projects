@@ -19,7 +19,16 @@ export class AllEmployeesComponent implements OnInit {
 		this.employees$ = this.employeeService.entities$;
 		this.loading$ = this.employeeService.loading$;
 	}
+
 	ngOnInit(): void {
-		this.employeeService.getAll();
+		this.employeeService.loaded$.subscribe((loaded) => {
+			if (!loaded) {
+				this.employeeService.getAll();
+			}
+		});
+
+		setTimeout(() => {
+			this.employeeService.updateOneInCache({ id: '1', firstName: 'Tim', lastName: 'Smith' });
+		}, 3000);
 	}
 }
