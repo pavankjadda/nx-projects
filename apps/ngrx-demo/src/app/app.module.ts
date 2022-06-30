@@ -9,15 +9,14 @@ import { environment } from '../environments/environment';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { reducers } from './state/root.reducer';
 import { HttpClientModule } from '@angular/common/http';
-import { DefaultDataServiceConfig, EntityDataModule, EntityDataService } from '@ngrx/data';
-import { appEntityMetadata } from './state/entities/app-entity-metadata';
+import { DefaultDataServiceConfig, EntityDataModule } from '@ngrx/data';
+import { entityConfig } from './state/entities/app-entity-metadata';
 import { AllEmployeesComponent } from './all-employees/all-employees.component';
-import { EmployeeDataService } from './employee/employee-data.service';
 
 const defaultDataServiceConfig: DefaultDataServiceConfig = {
 	root: 'http://localhost:3000/',
 	timeout: 3000, // request timeout
-}
+};
 
 @NgModule({
 	declarations: [AppComponent],
@@ -40,18 +39,16 @@ const defaultDataServiceConfig: DefaultDataServiceConfig = {
 				strictStateImmutability: true,
 			},
 		}),
-		EntityDataModule.forRoot({
-			entityMetadata: appEntityMetadata,
-		}),
 		EffectsModule.forRoot([]),
+		EntityDataModule.forRoot(entityConfig),
 		!environment.production ? StoreDevtoolsModule.instrument() : [],
 		StoreRouterConnectingModule.forRoot(),
 	],
-	providers: [EmployeeDataService,{ provide: DefaultDataServiceConfig, useValue:    defaultDataServiceConfig }],
+	//providers: [{ provide: DefaultDataServiceConfig, useValue:    defaultDataServiceConfig }],
 	bootstrap: [AppComponent],
 })
 export class AppModule {
-	constructor(entityDataService: EntityDataService, EmployeeDataService: EmployeeDataService) {
+	/*constructor(entityDataService: EntityDataService, EmployeeDataService: EmployeeDataService) {
 		entityDataService.registerService('Employee', EmployeeDataService);
-	}
+	}*/
 }

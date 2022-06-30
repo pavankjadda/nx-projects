@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Employee } from '../employee/employee';
 import { EmployeeService } from '../employee/employee.service';
@@ -11,11 +11,15 @@ import { Observable } from 'rxjs';
 	templateUrl: './all-employees.component.html',
 	styleUrls: ['./all-employees.component.scss'],
 })
-export class AllEmployeesComponent {
+export class AllEmployeesComponent implements OnInit {
+	loading$: Observable<boolean> | undefined;
 	employees$: Observable<Employee[]> | undefined;
 
 	constructor(private employeeService: EmployeeService) {
-		this.employees$ = this.employeeService.getAll();
-		this.employeeService.entities$.subscribe((data) => console.log(data));
+		this.employees$ = this.employeeService.entities$;
+		this.loading$ = this.employeeService.loading$;
+	}
+	ngOnInit(): void {
+		this.employeeService.getAll();
 	}
 }

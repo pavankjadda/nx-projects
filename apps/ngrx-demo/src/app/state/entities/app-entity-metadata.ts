@@ -1,7 +1,12 @@
 import { EntityMetadataMap } from '@ngrx/data';
 
-export const appEntityMetadata: EntityMetadataMap = {
-	Employee: {
-		entityName: 'Employee',
-	},
+const pluralNames = { Employee: 'Employees' };
+
+export const entityMetadata: EntityMetadataMap = {
+	Employee: {},
+};
+
+export const entityConfig = {
+	entityMetadata,
+	pluralNames,
 };
