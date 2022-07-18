@@ -26,9 +26,5 @@ export class AllEmployeesComponent implements OnInit {
 				this.employeeService.getAll();
 			}
 		});
-
-		setTimeout(() => {
-			this.employeeService.updateOneInCache({ id: '1', firstName: 'Tim', lastName: 'Smith' });
-		}, 3000);
 	}
 }

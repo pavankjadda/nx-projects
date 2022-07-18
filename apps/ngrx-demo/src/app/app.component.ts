@@ -6,7 +6,6 @@ import { RootState } from './state/root.reducer';
 @Component({
 	selector: 'nx-projects-root',
 	templateUrl: './app.component.html',
-	styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
 	drawerOpen$ = this.store.select((state) => state.preferencesState?.drawerOpen);
