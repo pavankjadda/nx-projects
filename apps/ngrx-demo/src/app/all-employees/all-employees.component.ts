@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Employee } from '../employee/employee';
 import { EmployeeService } from '../employee/employee.service';
-import { Observable } from 'rxjs';
 
 @Component({
 	selector: 'nx-projects-all-employees',
@@ -12,19 +10,12 @@ import { Observable } from 'rxjs';
 	styleUrls: ['./all-employees.component.scss'],
 })
 export class AllEmployeesComponent implements OnInit {
-	loading$: Observable<boolean> | undefined;
-	employees$: Observable<Employee[]> | undefined;
+	loading$ = this.employeeService.loading$;
+	employees$ = this.employeeService.employees$;
 
-	constructor(private employeeService: EmployeeService) {
-		this.employees$ = this.employeeService.entities$;
-		this.loading$ = this.employeeService.loading$;
-	}
+	constructor(private employeeService: EmployeeService) {}
 
 	ngOnInit(): void {
-		this.employeeService.loaded$.subscribe((loaded) => {
-			if (!loaded) {
-				this.employeeService.getAll();
-			}
-		});
+		this.employeeService.update({ id: '1', firstName: 'Jack', lastName: 'Ryan' });
 	}
 }
