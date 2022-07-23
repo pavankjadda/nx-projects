@@ -4,7 +4,9 @@
 		"change-detection-demo": "apps/change-detection-demo",
 		"express-test": "apps/express-test",
 		"ngrx-demo": "apps/ngrx-demo",
-		"progress-util-demo": "apps/progress-util-demo"
+		"progress-util-demo": "apps/progress-util-demo",
+		"react-components-demo": "apps/react-components-demo",
+		"standalone-components-demo": "apps/standalone-components-demo"
 	},
 	"$schema": "./node_modules/nx/schemas/workspace-schema.json"
 }
